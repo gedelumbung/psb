@@ -1,7 +1,7 @@
 <?php
 include('koneksi.php');
 $pass=md5($_POST['password']);
-$user=$_POST['username'];
+$user=mysql_real_escape_string($_POST['username']);
 $login=sprintf("SELECT * FROM tbl_user WHERE username='$user' AND pass='$pass'", mysql_real_escape_string($user), mysql_real_escape_string($pass));
 $cek_lagi=mysql_query($login);
 $ketemu=mysql_num_rows($cek_lagi);
